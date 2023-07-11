@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+import useFetch from './hooks/useFetch';
+import Form from './components/Form';
+import CountryList from './components/CountryList';
 import './App.css';
 
 function App() {
+  const [countries, setCountries] = useState();
+  const { loading, data, error } = useFetch();
+
+  const handleSubmit = (state) => {
+    console.log(state)
+  }
+
+  useEffect(() => {
+    if (data) {
+      setCountries(data);
+    }
+  }, [data]);
+
+
+  if (loading) return 'Loading...';
+  if (error) return 'Error!';
+  if (!countries) return null;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form onSubmit={handleSubmit} />
+      <CountryList data={countries} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-export function filterByPopulation(data, population = '') {
+export function filterByPopulation(data, population) {
     if (!population || isNaN(+ population)) return data;
 
     const populationValue = population * 1000000;

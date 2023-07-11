@@ -1,2 +1,3 @@
 export { filterByName } from './filterByName';
-export { filterByPopulation } from './filterByPopulation'
+export { filterByPopulation } from './filterByPopulation';
+export { sortByCommonName } from './sortByName';

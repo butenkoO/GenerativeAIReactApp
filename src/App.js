@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import useFetch from './hooks/useFetch';
 import Form from './components/Form';
 import CountryList from './components/CountryList';
-import { filterByName, filterByPopulation } from './helpers'
+import { filterByName, filterByPopulation, sortByCommonName } from './helpers'
 import './App.css';
 
 function App() {
@@ -12,7 +12,8 @@ function App() {
   const handleSubmit = (state) => {
     const filteredByName = filterByName(data, state.country);
     const filteredByPopulation = filterByPopulation(filteredByName, state.population);
-    setCountries(filteredByPopulation);
+    const sortedData = sortByCommonName(filteredByPopulation, state.sortBy);
+    setCountries(sortedData);
   }
 
   useEffect(() => {

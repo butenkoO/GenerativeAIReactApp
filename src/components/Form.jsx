@@ -36,10 +36,10 @@ const Form = ({onSubmit}) => {
       />
       <input
         type="text"
-        name="input3"
-        value={state.input3}
+        name="sortBy"
+        value={state.sortBy}
         onChange={handleChange}
-        placeholder="Input 3"
+        placeholder="Sort by ascend or descend"
       />
       <input
         type="text"

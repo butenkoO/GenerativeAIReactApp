@@ -1,0 +1,42 @@
+most of the tasks was realized in the scope of previous tasks
+
+how to optimaze this 
+ const handleSubmit = (state) => {
+    const filteredByName = filterByName(data, state.country);
+    const filteredByPopulation = filterByPopulation(filteredByName, state.population);
+    const limiedItems = limitItems(filteredByPopulation, state.limit);
+    const sortedData = sortByCommonName(limiedItems, state.sortBy);
+    setCountries(sortedData);
+  }
+
+_____________________________________________________________
+
+Your existing code is already quite clean and legible, and it does a good job of clearly showing what's happening at each step of the filtering and sorting process. That being said, there are a few potential optimizations and improvements you might consider:
+
+Chain the functions: You could chain the functions in one line to reduce the lines of code. However, be aware that this could decrease readability.
+
+Avoid filtering if not necessary: If any of the state fields (country, population, limit) is null or has its default value, you can skip the related filtering function to avoid unnecessary computation.
+
+Here is an example of how these improvements could be implemented:
+
+const handleSubmit = (state) => {
+  let result = data;
+
+  if (state.country) {
+    result = filterByName(result, state.country);
+  }
+  
+  if (state.population) {
+    result = filterByPopulation(result, state.population);
+  }
+
+  if (state.limit) {
+    result = limitItems(result, state.limit);
+  }
+  
+  result = state.sortBy ? sortByCommonName(result, state.sortBy) : result;
+
+  setCountries(result);
+}
+
+The above version only executes filtering functions when necessary, which might improve performance if the dataset data is large. However, remember that premature optimization is not always beneficial. It's important to understand the specifics of your use case and test different approaches to see what provides the best balance between performance and readability/maintainability.

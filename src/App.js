@@ -9,12 +9,19 @@ function App() {
   const [countries, setCountries] = useState();
   const { loading, data, error } = useFetch();
 
-  const handleSubmit = (state) => {
-    const filteredByName = filterByName(data, state.country);
-    const filteredByPopulation = filterByPopulation(filteredByName, state.population);
-    const limiedItems = limitItems(filteredByPopulation, state.limit);
-    const sortedData = sortByCommonName(limiedItems, state.sortBy);
-    setCountries(sortedData);
+  const handleSubmit = ({ country, population, limit, sortBy }) => {
+    let result = data;
+    if (country) {
+      result = filterByName(result, country);
+    }
+    if (population) {
+      result = filterByPopulation(result, population);
+    }
+    if (limit) {
+      result = limitItems(result, limit);
+    }
+    result = sortBy ? sortByCommonName(result, sortBy) : result;
+    setCountries(result);
   }
 
   useEffect(() => {
@@ -26,7 +33,7 @@ function App() {
 
   if (loading) return 'Loading...';
   if (error) return 'Error!';
-  if (!countries) return null;
+  if (!countries) return 'No data to display!';
 
   return (
     <div className="App">

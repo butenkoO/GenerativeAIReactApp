@@ -1,0 +1,1 @@
+export { filterByName } from './filterByName';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Form = ({onSubmit}) => {
   const [state, setState] = useState({
-    input1: '',
+    country: '',
     input2: '',
     input3: '',
     input4: '',
@@ -22,10 +22,10 @@ const Form = ({onSubmit}) => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        name="input1"
-        value={state.input1}
+        name="country"
+        value={state.country}
         onChange={handleChange}
-        placeholder="Input 1"
+        placeholder="Country"
       />
       <input
         type="text"

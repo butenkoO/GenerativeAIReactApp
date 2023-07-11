@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import useFetch from './hooks/useFetch';
 import Form from './components/Form';
 import CountryList from './components/CountryList';
+import { filterByName } from './helpers'
 import './App.css';
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
   const { loading, data, error } = useFetch();
 
   const handleSubmit = (state) => {
-    console.log(state)
+    const filteredByName = filterByName(data, state.country);
+    setCountries(filteredByName);
   }
 
   useEffect(() => {

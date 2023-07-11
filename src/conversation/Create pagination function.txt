@@ -1,0 +1,20 @@
+Create a js function that accepts numbers as an attribute and can limit the number of records. 
+The functionality should accept a number and retrieve first n records 
+
+_____________________________________________________________
+
+Certainly! Here's a JavaScript function that accepts an array of numbers and a limit parameter, and returns the first n records from the array:
+
+function retrieveRecords(numbers, limit) {
+  return numbers.slice(0, limit);
+}
+
+Here's an example usage:
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const limit = 5;
+
+const result = retrieveRecords(numbers, limit);
+console.log(result); // Output: [1, 2, 3, 4, 5]
+
+In the example above, the retrieveRecords function is called with an array of numbers (numbers) and a limit of 5. It uses the slice method to extract the first limit number of elements from the array and returns the resulting subarray [1, 2, 3, 4, 5].

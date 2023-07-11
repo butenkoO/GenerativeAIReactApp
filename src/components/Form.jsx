@@ -4,8 +4,8 @@ const Form = ({onSubmit}) => {
   const [state, setState] = useState({
     country: '',
     population: '',
-    input3: '',
-    input4: '',
+    sortBy: '',
+    limit: '',
   });
 
   const handleChange = e => {
@@ -43,10 +43,10 @@ const Form = ({onSubmit}) => {
       />
       <input
         type="text"
-        name="input4"
-        value={state.input4}
+        name="limit"
+        value={state.limit}
         onChange={handleChange}
-        placeholder="Input 4"
+        placeholder="Limit"
       />
       <button type="submit">Submit</button>
     </form>

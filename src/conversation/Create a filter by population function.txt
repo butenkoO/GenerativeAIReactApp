@@ -1,0 +1,37 @@
+provide me js function to filter by population
+data structure is [{ population:  'value'}]
+function should accepts a number and data as attributes and can filter by ` population `
+it should search for items where the population is less than provided number
+provided number should be in millions
+means if the parameter is 10 it should be equal to 10000000
+
+_____________________________________________________________
+
+Certainly! Here's a JavaScript function that accepts a number (in millions) and a data array as arguments. It filters the array based on the population value, returning only the items where the population is less than the provided number.
+
+function filterByPopulation(number, data) {
+  // Convert the provided number to actual population value
+  const populationValue = number * 1000000;
+
+  // Filter the data array based on population
+  const filteredData = data.filter(item => item.population < populationValue);
+
+  return filteredData;
+}
+
+To use this function, pass the number (in millions) and the data array to it. It will return a new array containing only the items where the population is less than the provided number.
+
+Here's an example usage:
+
+const data = [
+  { population: 5000000 },
+  { population: 8000000 },
+  { population: 12000000 },
+  { population: 3000000 },
+  { population: 15000000 }
+];
+
+const filteredResult = filterByPopulation(10, data);
+console.log(filteredResult);
+
+In this example, the data array contains objects with a population property. The function is called with 10 as the number (which represents 10 million), and it filters the data array based on the population values. The filtered result is then logged to the console.
